@@ -4,10 +4,13 @@ ThisBuild / organization := "lamora"
 
 lazy val root = project
   .in(file("."))
-  .enablePlugins(PlayScala)
   .settings(
     name := "lamora-backend",
     libraryDependencies ++= Seq(
-      guice
-    )
+      "dev.zio" %% "zio" % "2.1.26",
+      "dev.zio" %% "zio-http" % "3.11.2",
+      "dev.zio" %% "zio-test" % "2.1.26" % Test,
+      "dev.zio" %% "zio-test-sbt" % "2.1.26" % Test
+    ),
+    testFrameworks += new TestFramework("zio.test.sbt.ZTestFramework")
   )
