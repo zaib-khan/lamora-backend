@@ -6,6 +6,7 @@ lazy val root = project
   .in(file("."))
   .settings(
     name := "lamora-backend",
+    Compile / run / fork := true,
     libraryDependencies ++= Seq(
       "dev.zio" %% "zio" % "2.1.26",
       "dev.zio" %% "zio-http" % "3.11.2",
