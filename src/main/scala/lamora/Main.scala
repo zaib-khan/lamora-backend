@@ -3,7 +3,7 @@ package lamora
 import lamora.http.HealthRoutes
 import zio.*
 import zio.http.*
-import AsciiBanner._
+import lamora.starter.AsciiBanner._
 
 object Main extends ZIOAppDefault:
 
@@ -11,7 +11,7 @@ object Main extends ZIOAppDefault:
 
   def run: ZIO[Any, Throwable, Nothing] = {
     for {
-      _   <- ZIO.succeed(println(bannerColor))
+      _   <- displayRandomBanner
       _   <- ZIO.logInfo(s"Lamora backend started on http://localhost:$port")
       res <- Server
         .serve(HealthRoutes.routes)
