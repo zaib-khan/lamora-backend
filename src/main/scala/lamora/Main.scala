@@ -12,7 +12,6 @@ object Main extends ZIOAppDefault:
   def run: ZIO[Any, Throwable, Nothing] = {
     for {
       _   <- displayRandomBanner
-      _   <- ZIO.logInfo(s"Lamora backend started on http://localhost:$port")
       res <- Server
         .serve(HealthRoutes.routes)
         .provide(Server.defaultWithPort(port))
